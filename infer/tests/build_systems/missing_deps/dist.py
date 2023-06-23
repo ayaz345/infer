@@ -13,8 +13,8 @@ import sys
 INFER=os.environ.get('INFER_BIN')
 ROOT=sys.path[0]
 SOURCES=['src/a.c','src/b.c']
-SOURCE_CAPTURE=ROOT + '/source-out'
-MERGE_ARGS_FILE=ROOT + '/merge-args'
+SOURCE_CAPTURE = f'{ROOT}/source-out'
+MERGE_ARGS_FILE = f'{ROOT}/merge-args'
 
 def get_cmd_output(cmd):
     return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout
@@ -46,9 +46,9 @@ def main():
     extra_args = []
 
     for idx, file in enumerate(capture_and_get_files()):
-        results_dir = ROOT + '/' + str(idx) + '-out'
+        results_dir = f'{ROOT}/{str(idx)}-out'
 
-        index_file = ROOT + '/' + str(idx) + '.index'
+        index_file = f'{ROOT}/{str(idx)}.index'
         with open(index_file, 'w') as f:
             f.write(file)
 
